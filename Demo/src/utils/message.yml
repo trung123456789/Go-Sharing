@@ -1,0 +1,15 @@
+Msg:
+  ConnectErr: "connect error"
+  SearchErr: "search error"
+  DatabseErr: "database error"
+  JSONErr: "json error"
+  NotFound: "Not Found"
+  ServerErr: "server error"
+ErrMsg:
+  ConnectErr: "Database connection failed"
+  SearchErr: "User does not exist!"
+  DatabseErr: "Database excute failed"
+  JSONErr: "Convert json failed"
+  NotFound: "User does not exist!"
+  ServerErr: "server error"
+

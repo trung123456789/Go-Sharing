@@ -1,0 +1,12 @@
+# Server configurations
+server:
+  host: "localhost"
+  port: 8000
+
+# Database credentials
+database:
+  dbhost: "localhost"
+  dbport: 5432
+  dbuser: "postgres"
+  dbpass: "123456"
+  dbname: "Demo"
