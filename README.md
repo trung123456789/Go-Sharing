@@ -1,3 +1,3 @@
 # Go-Sharing
 ## Install:
-    *go get*
+    go get
