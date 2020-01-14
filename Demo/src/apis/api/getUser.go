@@ -1,17 +1,16 @@
 package api
 
 import (
-	"net/http"
-	"messagecustom"
-	"responsecustom"
-	"fmt"
+	"bytes"
 	"database/sql"
 	"encoding/json"
-	"bytes"
-	"utils"
+	"fmt"
 	"log"
+	"messagecustom"
+	"net/http"
+	"responsecustom"
+	"utils"
 )
-
 
 // PostGetUser function
 func PostGetUser(w http.ResponseWriter, r *http.Request) {
@@ -32,8 +31,8 @@ func PostGetUser(w http.ResponseWriter, r *http.Request) {
 	var query bytes.Buffer
 	if countUser(query, userRequest, database) == 0 {
 		messageUtil := messagecustom.MessageUtil(
-			messagecustom.GetMessage().Msg.SearchErr,
-			"User does not exist")
+			messagecustom.GetMessage().Msg.NotFound,
+			messagecustom.GetMessage().ErrMsg.NotFound)
 		responsecustom.ResponseCustom(w, http.StatusNotFound, messageUtil)
 		return
 	}
@@ -82,7 +81,6 @@ func queryUtil(query bytes.Buffer, request UserRequest) bytes.Buffer {
 	}
 	return query
 }
-
 
 func countUser(query bytes.Buffer, userRequest UserRequest, database *sql.DB) int {
 	var count int

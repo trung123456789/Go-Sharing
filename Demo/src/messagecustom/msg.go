@@ -1,11 +1,12 @@
 package messagecustom
 
 import (
+	"constants"
 	"encoding/json"
 	"os"
 	"structdemo"
 
-	"gopkg.in/yaml.v2"
+	yaml "gopkg.in/yaml.v2"
 )
 
 // MessageCustom type
@@ -29,7 +30,7 @@ func MessageUtil(msg string, errMsg string) []byte {
 
 // GetMessage function
 func GetMessage() (message *Message) {
-	f, err := os.Open("./src/utils/message.yml")
+	f, err := os.Open(constants.MsgDic)
 	if err != nil {
 		panic(err)
 	}

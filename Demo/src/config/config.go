@@ -1,6 +1,7 @@
 package config
 
 import (
+	"constants"
 	"os"
 	"structdemo"
 
@@ -12,7 +13,7 @@ type Config structdemo.Config
 
 // GetEnv function
 func GetEnv() (cfg *Config) {
-	f, err := os.Open("./src/config/config.yml")
+	f, err := os.Open(constants.CfgDic)
 	if err != nil {
 		panic(err)
 	}

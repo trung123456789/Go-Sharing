@@ -2,10 +2,12 @@ package connection
 
 import (
 	"config"
+	"constants"
 	"database/sql"
 	"fmt"
-	_ "github.com/lib/pq"
 	"structdemo"
+
+	_ "github.com/lib/pq"
 )
 
 // Config type
@@ -22,7 +24,7 @@ func CreateConnection() (*sql.DB, error) {
 		cfg.Database.DbHost, cfg.Database.DbPort,
 		cfg.Database.DbUser, cfg.Database.DbPass, cfg.Database.DbName)
 
-	db, err := sql.Open("postgres", psqlInfo)
+	db, err := sql.Open(constants.DriverName, psqlInfo)
 	if err != nil {
 		return nil, err
 	}
