@@ -40,7 +40,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	// Check user exist
 	querySelect := `
 		SELECT user_id
-		FROM userinfo
+		FROM user_infos
 		WHERE user_id = $1
 	`
 	var id int
@@ -56,7 +56,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	// Update user
 	queryUpdate := `
 		DELETE
-		FROM userinfo 
+		FROM user_infos 
 		WHERE user_id = $1 returning user_id`
 	errQuery := database.QueryRow(queryUpdate, userID).Scan(&userResponse.ID)
 

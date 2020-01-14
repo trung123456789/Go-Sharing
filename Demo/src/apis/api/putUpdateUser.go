@@ -25,7 +25,7 @@ func PutUpdateUser(w http.ResponseWriter, r *http.Request) {
 	// Check user exist
 	querySelect := `
 		SELECT *
-		FROM userinfo
+		FROM user_infos
 		WHERE user_id = $1
 	`
 	row, errSelect := database.Query(querySelect, userRequest.ID)

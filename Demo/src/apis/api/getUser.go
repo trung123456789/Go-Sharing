@@ -86,7 +86,7 @@ func countUser(query bytes.Buffer, userRequest UserRequest, database *sql.DB) in
 	var count int
 	queryCount := `
 		SELECT COUNT(*)
-		FROM userinfo
+		FROM user_infos
 	`
 	query.WriteString(queryCount)
 	query = queryUtil(query, userRequest)
@@ -100,7 +100,7 @@ func countUser(query bytes.Buffer, userRequest UserRequest, database *sql.DB) in
 func selectUser(w http.ResponseWriter, query bytes.Buffer, userRequest UserRequest, database *sql.DB) *sql.Rows {
 	querySelect := `
 		SELECT *
-		FROM userinfo
+		FROM user_infos
 	`
 	query.WriteString(querySelect)
 

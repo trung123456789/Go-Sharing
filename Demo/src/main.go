@@ -1,8 +1,12 @@
 package main
 
-import "urls"
+import (
+	"urls"
+	"utils"
+)
 
 func main() {
-	// api.Basicxample()
+	// Auto generate db
+	utils.AutoMigrateDb()
 	urls.GeneralURL()
 }

@@ -2,12 +2,16 @@ package utils
 
 import (
 	"database-demo/connection"
-	"messagecustom"
-	"responsecustom"
 	"database/sql"
 	"io/ioutil"
+	"messagecustom"
 	"net/http"
+	"responsecustom"
+	"structdemo"
 )
+
+// UserInfo type
+type UserInfo structdemo.UserInfo
 
 // InitialConnect function
 func InitialConnect(w http.ResponseWriter, r *http.Request) (*sql.DB, []byte) {
@@ -27,4 +31,18 @@ func InitialConnect(w http.ResponseWriter, r *http.Request) (*sql.DB, []byte) {
 		return nil, nil
 	}
 	return database, body
+}
+
+// AutoMigrateDb func
+func AutoMigrateDb() {
+	var w http.ResponseWriter
+	database, errConnectDb := connection.GormConnection()
+	if errConnectDb != nil {
+		messageUtil := messagecustom.MessageUtil(
+			messagecustom.GetMessage().Msg.DatabseErr,
+			messagecustom.GetMessage().ErrMsg.DatabseErr)
+		responsecustom.ResponseCustom(w, http.StatusInternalServerError, messageUtil)
+	}
+	// Migrate the schema
+	database.AutoMigrate(&UserInfo{})
 }

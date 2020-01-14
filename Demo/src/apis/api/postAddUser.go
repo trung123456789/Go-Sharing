@@ -23,7 +23,7 @@ func PostAddUser(w http.ResponseWriter, r *http.Request) {
 	}
 	query := `
 		INSERT INTO
-		userinfo(name, age)
+		user_infos(name, age)
 		VALUES($1, $2) returning user_id`
 	errQuery := database.QueryRow(query, userRequest.Name, userRequest.Age).Scan(&userResponse.ID)
 	// rs, errQuery := database.Exec(query, userReuqest.Name, userReuqest.Age)

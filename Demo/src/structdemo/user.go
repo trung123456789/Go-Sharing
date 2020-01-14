@@ -6,3 +6,10 @@ type User struct {
 	Name *string `json:"name"`
 	Age  *int    `json:"age"`
 }
+
+// UserInfo struct
+type UserInfo struct {
+	UserID uint `gorm:"primary_key"`
+	Name   string
+	Age    int
+}
